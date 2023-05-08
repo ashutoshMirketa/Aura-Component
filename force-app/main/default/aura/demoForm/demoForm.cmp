@@ -1,0 +1,20 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <div>
+        <div>
+            <lightning:input label=" Name" aura:id="name" required="true" type ="text" pattern ="[A-Za-z]{0,35}" />
+            <lightning:input label="Age" aura:id="age" required="true" type="number"  />
+        </div>
+        
+        <div>
+        <lightning:input label="Email" aura:id="email" required="true" type="email" pattern="[A-Za-z0-9._-]+@[a-z0-9-]+\.[a-z]{2,}$" message-when-pattern-mismatch="Please enter a valid email" />
+        </div>
+        
+        <div>
+        <lightning:input label="Phone" aura:id="phone" type="tel" pattern="[0-9]{10}" message-when-pattern-mismatch="Please enter a valid phone number" required="true"/>
+        </div>
+    
+            <lightning:button label="Save" onclick="{!c.myAction}" />
+        
+    </div>
+
+</aura:component>
