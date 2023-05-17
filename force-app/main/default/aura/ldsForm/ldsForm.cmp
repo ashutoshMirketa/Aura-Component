@@ -4,7 +4,7 @@
     <aura:attribute type="Object" name="record"/> -->
     <lightning:navigation aura:id="navService"/>
 
-    <aura:attribute type="boolean" name="show_rev" default="false"/>
+    <aura:attribute type="boolean" name="show_rev" default="true"/>
     <lightning:recordEditForm aura:id="recordEditForm" objectApiName="Account" recordId="{!v.recordId}" onsuccess="{!c.handleSuccess}">
         <lightning:messages />
         <!-- <lightning:outputField fieldName="AccountId" /> -->
@@ -15,6 +15,6 @@
         </aura:if>
         <lightning:inputField fieldName ="AccountNumber" required="false" aura:id="accountNumberField"/>
         
-        <lightning:button variant="brand" type="submit" name="save" label="Save" onclick="{!c.handleSubmit}" />
+        <lightning:button variant="brand" type="submit" name="save" label="Save"/>
     </lightning:recordEditForm>
 </aura:component>
