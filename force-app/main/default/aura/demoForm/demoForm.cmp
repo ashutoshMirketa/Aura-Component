@@ -1,20 +1,45 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
-    <div>
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"  > 
+<!-- <aura:handler name="init" value= "{!this}" action="{!c.init}"/>  -->
+<aura:attribute name="tableData"  type="List" default="[]"/>
+<aura:attribute name="columns" type ="List"/>
+
+<div>
         <div>
-            <lightning:input label=" Name" aura:id="name" required="true" type ="text" pattern ="[A-Za-z]{0,35}" />
-            <lightning:input label="Age" aura:id="age" required="true" type="number"  />
+            <lightning:input label=" Name" aura:id="Name" required="true" type ="text" pattern ="[A-Za-z ]{0,35}" />
+            <lightning:input label="Age" aura:id="Age" required="true" type="number"  />
         </div>
         
         <div>
-        <lightning:input label="Email" aura:id="email" required="true" type="email" pattern="[A-Za-z0-9._-]+@[a-z0-9-]+\.[a-z]{2,}$" message-when-pattern-mismatch="Please enter a valid email" />
+        <lightning:input label="Email" aura:id="Email" required="true" type="email" pattern="[A-Za-z0-9._-]+@[a-z0-9-]+\.[a-z]{2,}$" message-when-pattern-mismatch="Please enter a valid email" />
         </div>
         
         <div>
-        <lightning:input label="Phone" aura:id="phone" type="tel" pattern="[0-9]{10}" message-when-pattern-mismatch="Please enter a valid phone number" required="true"/>
+        <lightning:input label="Phone" aura:id="Phone" type="tel" pattern="[0-9]{10}" message-when-pattern-mismatch="Please enter a valid phone number" required="true"/>
         </div>
     
-            <lightning:button label="Save" onclick="{!c.myAction}" />
+            <lightning:button variant ="Success" label="Submit" onclick="{!c.getData}"  />
         
     </div>
+    <!-- <lightning:datatable data="{!v.tableData}" columns="{!v.columns}" keyField="id" /> -->
+    <!-- <table aura:id = "table" class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped slds-hide">
+        <thead>
+            <tr>
+            <th>Name</th>
+            <th>Age</th>
+             <th>Email</th>
+            <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.infoList}" var="info">
+                <tr>
+                <td>{!info.Name}</td>
+                <td>{!info.Age}</td>
+                <td>{!info.Email}</td>
+                <td>{!info.Phone}</td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table> -->
 
 </aura:component>

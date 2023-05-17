@@ -1,4 +1,4 @@
 <aura:application extends="force:slds" >
-    <c:demoForm/>
+     <c:ldsForm/>
 	
 </aura:application>
