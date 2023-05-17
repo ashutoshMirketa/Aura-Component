@@ -1,0 +1,20 @@
+<aura:component implements="force:appHostable, force:hasRecordId,flexipage:availableForRecordHome, force:lightningQuickAction, lightning:actionOverride">
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <!-- <aura:attribute type="String" name="recordId"/>
+    <aura:attribute type="Object" name="record"/> -->
+    <lightning:navigation aura:id="navService"/>
+
+    <aura:attribute type="boolean" name="show_rev" default="false"/>
+    <lightning:recordEditForm aura:id="recordEditForm" objectApiName="Account" recordId="{!v.recordId}" onsuccess="{!c.handleSuccess}">
+        <lightning:messages />
+        <!-- <lightning:outputField fieldName="AccountId" /> -->
+        <lightning:inputField fieldName="Name" />
+            <lightning:inputField aura:id="typeField" fieldName="Type" onchange="{!c.typeChange}" />
+            <aura:if isTrue="{!v.show_rev}">
+            <lightning:inputField fieldName="AnnualRevenue" aura:id="annualRevenueField" />
+        </aura:if>
+        <lightning:inputField fieldName ="AccountNumber" required="false" aura:id="accountNumberField"/>
+        
+        <lightning:button variant="brand" type="submit" name="save" label="Save" onclick="{!c.handleSubmit}" />
+    </lightning:recordEditForm>
+</aura:component>
