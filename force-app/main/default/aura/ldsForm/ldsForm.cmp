@@ -1,11 +1,13 @@
 <aura:component implements="force:appHostable, force:hasRecordId,flexipage:availableForRecordHome, force:lightningQuickAction, lightning:actionOverride">
+    <aura:attribute type="boolean" name="show_rev" default="false"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
     <lightning:notificationsLibrary aura:id="notifLib"/>
+    
     <!-- <aura:attribute type="String" name="recordId"/>
-    <aura:attribute type="Object" name="record"/> -->
-    <lightning:navigation aura:id="navService"/>
-
-    <aura:attribute type="boolean" name="show_rev" default="true"/>
-    <lightning:recordEditForm aura:id="recordEditForm" objectApiName="Account" recordId="{!v.recordId}" onsuccess="{!c.handleSuccess}">
+        <aura:attribute type="Object" name="record"/> -->
+        <lightning:navigation aura:id="navService"/>
+        <lightning:recordEditForm aura:id="recordEditForm" objectApiName="Account" recordId="{!v.recordId}" onsuccess="{!c.handleSuccess}">
+        <lightning:card title="Account" iconName="standard:account"> 
         <lightning:messages />
         <!-- <lightning:outputField fieldName="AccountId" /> -->
         <lightning:inputField fieldName="Name" />
@@ -15,6 +17,8 @@
         </aura:if>
         <lightning:inputField fieldName ="AccountNumber" required="false" aura:id="accountNumberField"/>
         
-        <lightning:button variant="brand" type="submit" name="save" label="Save"/>
+        <lightning:button variant="brand" type="submit" name="save" label="Save" onclick="{!c.handleShowPopover}"/>
+    </lightning:card>
     </lightning:recordEditForm>
+
 </aura:component>

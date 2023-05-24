@@ -1,0 +1,42 @@
+<aura:component controller="WithoutLdsAccount" implements="force:appHostable, force:hasRecordId,flexipage:availableForRecordHome, lightning:actionOverride" >
+    <aura:attribute name="accountFields" type="List" />
+    <aura:attribute type="boolean" name="show_rev"/>  
+    <aura:attribute name="newAccount" type="Account" default="{ 'sobjectType': 'Account',
+                                                                 'Name':'',
+                                                                'Type' :'',
+                                                             'AccountNumber':'',
+                                                            'AnnualRevenue':''}" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" /> 
+    <aura:attribute type="String" name="recordId" default="{!v.recordId}"/>  
+    <lightning:navigation aura:id="navService"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <!-- <lightning:notificationsLibrary aura:id="notifLib"/> -->
+    <lightning:card title="Account" iconName="standard:account"> 
+        <div>
+            <!-- <label>Account Name:</label> -->
+            <lightning:input label="Account Name:" type="text" aura:id="accountName" value="{!v.newAccount.Name}" />
+        </div>
+        
+        <div>
+            <!-- <label>Type:</label> -->
+            <lightning:select label="Type" aura:id="accountType" value="{!v.newAccount.Type}" onchange="{!c.typeChange}">
+                <aura:iteration items="{!v.accountFields}" var="field">
+                    <option value="{!field}">{!field}</option>
+                </aura:iteration>
+            </lightning:select>
+        </div>
+        
+        <div>
+            <!-- <label>Account Number:</label> -->
+            <lightning:input label="Account Number:" type="text" aura:id="accountNumber" value="{!v.newAccount.AccountNumber}" />
+        </div>
+        <aura:if isTrue="{!v.show_rev}">
+            <!-- <label>Annual Revenue:</label> -->
+            <lightning:input label="Account Revenue:" type="text" aura:id="annualRevenue" value="{!v.newAccount.AnnualRevenue}" />
+        
+    </aura:if>
+        
+        <lightning:button variant ="Success" label="Save" onclick="{!c.createAccount}"/>
+        </lightning:card>
+    
+</aura:component>

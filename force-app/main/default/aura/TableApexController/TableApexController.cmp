@@ -1,0 +1,9 @@
+<aura:component controller ="DataTableApexController" implements="force:appHostable,force:hasRecordId,flexipage:availableForRecordHome,flexipage:availableForAllPageTypes">
+    <aura:attribute name="acc" type="Account[]"/>
+    <aura:attribute name="columns" type="List" default="[]"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:button type="submit" onclick="{!c.showData}" name="Submit" label="New"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <lightning:datatable data="{!v.acc}" columns="{!v.columns}" keyField="id" onrowaction="{!c.handleRow}"/>
+</aura:component>	

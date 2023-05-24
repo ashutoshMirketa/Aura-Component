@@ -5,11 +5,15 @@
         if(typeField !=""){
             accountNumberField.set("v.required", true);
         }
+        else{
+            accountNumberField.set("v.required", false);
+        }
         //let annualRevenueField = component.find("annualRevenueField");
         if (typeField === "Prospect" || typeField === "Other") {
             //component.set("v.disabled", true);
             component.set("v.show_rev",false);
             // accountNumberField.set("v.required", true);
+            
         } else {
             //component.set("v.disabled", false);
             component.set("v.show_rev",true);
@@ -24,9 +28,7 @@
         });
         let returnId = event.getParams().response;
         //let recordId=response.id;
-        //console.log(recordId);
-            
-        
+        //console.log(recordId);           
         let pageReference = {
             type: 'standard__recordPage',
             attributes: {
@@ -34,11 +36,9 @@
                 objectApiName: 'Account',
                 actionName: 'view'
                 }
-            };
-            
+            };           
             let navService = component.find("navService");
             navService.navigate(pageReference);
-
      }
     // handleSubmit: function(component, event, helper) {
     //     let response = event.getParams().response;
